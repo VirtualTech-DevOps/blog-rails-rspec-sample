@@ -4,5 +4,3 @@ services:
   rails:
     build: .
     tty: true
-    volumes:
-      - ./src/:/app/

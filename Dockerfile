@@ -2,6 +2,9 @@ FROM ruby:3.1
 
 RUN apt update -y
 
+WORKDIR /app
+COPY ./src/ /app
+
 # Node.jsインストール
 RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh && \
     bash nodesource_setup.sh && \
@@ -12,8 +15,4 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh && \
     npm install -g yarn && \
     yarn -v
 
-RUN gem install rails && \
-    rails -v
-
-WORKDIR /app
-COPY src/ /app
+RUN bundle install
